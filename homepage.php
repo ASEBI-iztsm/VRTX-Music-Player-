@@ -71,29 +71,6 @@ class Database {
     </div>
 </div> 
 
-<!-- <div class="play-cont">
-    <div class="album-img-player">
-        <!--idk i have to put the album here or something
-    </div>
-    <div class="music-controls">
-        <div id="prev" class="music-controls-item">
-            <i class="fas fa-backward music-controls-item--icon"></i>
-        </div>
-
-        <div id="play" class="music-controls-item">
-            <i class="fas fa-play music-controls-item--icon play-icon"></i>
-            <div class="play-icon-background"></div>
-        </div>
-
-        <div id="next" class="music-controls-item">
-            <i class="fas fa-forward music-controls-item--icon"></i>
-        </div>
-    </div>
-    <div class="progress-bar">
-        <input type="range" min="0" max="100" value="0" id="progress">
-    </div>
-</div> -->
-
 <div class="play-cont">
     <div class="album-img-player">
         <!-- Add Album Image Here -->
