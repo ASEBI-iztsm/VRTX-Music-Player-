@@ -1,4 +1,3 @@
-// Get player controls and elements
 const playButton = document.getElementById('play');
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
@@ -7,36 +6,38 @@ const progress = document.getElementById('progress');
 const currentTimeElement = document.getElementById('current-time');
 const durationElement = document.getElementById('duration-time');
 
-// Track list (Add more tracks if you'd like)
+
 const trackList = [
     'audio/Deftones - Diamond Eyes.mp3',
-    'audio/Linkin Park - Numb.mp3',
-    'audio/Breaking Benjamin - The Diary of Jane.mp3'
+    'audio/Ma Meilleure Ennemie (from the series Arcane League of Legends).mp3',
+    'audio/Pierce The Veil - One Hundred Sleepless Nights.mp3',
+    'audio/The Last Shadow Puppets - My Mistakes Were Made For You.mp3',
+    'audio/The Strokes - The Adults Are Talking.mp3'
 ];
 
-let currentTrackIndex = 0; // Index of the current track
+
+let currentTrackIndex = 0; 
 let isPlaying = false;
 let audioElement = null;
 
-// Function to initialize and load the selected audio track
+
 function initializeAudio(trackIndex = 0) {
     if (audioElement) {
-        audioElement.pause(); // Pause any previous audio
+        audioElement.pause(); 
     }
 
-    // Load new track based on trackList and trackIndex
     audioElement = new Audio(trackList[trackIndex]); 
     audioElement.addEventListener('timeupdate', updateProgress);
     audioElement.addEventListener('loadedmetadata', function() {
-        durationElement.textContent = formatTime(audioElement.duration); // Set total duration once metadata is loaded
+        durationElement.textContent = formatTime(audioElement.duration); 
     });
-    audioElement.addEventListener('ended', playNextTrack); // Play next track when the current one finishes
+    audioElement.addEventListener('ended', playNextTrack); 
 }
 
 // Event listener for play button
 playButton.addEventListener('click', function() {
     if (!audioElement) {
-        initializeAudio(currentTrackIndex); // Initialize the first track if not loaded
+        initializeAudio(currentTrackIndex);
     }
 
     if (audioElement.paused) {
@@ -54,67 +55,66 @@ playButton.addEventListener('click', function() {
 
 // Event listener for previous button
 prevButton.addEventListener('click', function() {
-    currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length; // Loop to the last track
+    currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
     initializeAudio(currentTrackIndex);
     audioElement.play();
     updatePlayButton();
 });
 
-// Event listener for next button
 nextButton.addEventListener('click', function() {
     playNextTrack();
 });
 
 function playNextTrack() {
-    currentTrackIndex = (currentTrackIndex + 1) % trackList.length; // Loop back to first track
+    currentTrackIndex = (currentTrackIndex + 1) % trackList.length; 
     initializeAudio(currentTrackIndex);
     audioElement.play();
     updatePlayButton();
 }
 
-// Function to update the play button icon
+
 function updatePlayButton() {
     playIcon.classList.remove('fa-play');
     playIcon.classList.add('fa-pause');
     isPlaying = true;
 }
 
-// Event listener for updating the progress bar
+// progress barrrr
 function updateProgress() {
     const progressValue = (audioElement.currentTime / audioElement.duration) * 100;
     progress.value = progressValue;
 
-    // Update the progress bar's background color
+   
     const bgColor = `linear-gradient(to right, #6114C0 ${progressValue}%, #585757 ${progressValue}%)`;
     progress.style.background = bgColor;
 
-    // Update the current time display
+    
     currentTimeElement.textContent = formatTime(audioElement.currentTime);
 }
 
-// Format time in MM:SS format
+
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
 
-// Update the audio current time when the progress bar is changed
+
 progress.addEventListener('input', function() {
     audioElement.currentTime = (progress.value / 100) * audioElement.duration;
     
-    // Update background color while dragging the thumb
+    
     const progressValue = progress.value;
     const bgColor = `linear-gradient(to right, #6114C0 ${progressValue}%, #585757 ${progressValue}%)`;
     progress.style.background = bgColor;
 });
 
-// Event listener for each play button in the content page
-const contentPlayButtons = document.querySelectorAll('.play-btn'); // Ensure you have a play button with this class
+
+const contentPlayButtons = document.querySelectorAll('.play-btn'); 
 
 contentPlayButtons.forEach((button, index) => {
     button.addEventListener('click', function() {
-        currentTrackIndex = index; // Set current track based on the clicked button
+        currentTrackIndex = index; 
         initializeAudio(currentTrackIndex);
         audioElement.play();
         updatePlayButton();
