@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'Lalezar';
+    src: url('./fonts/Lalezar-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background: #080808;
+    color: #FFFFFF;
+    font-family: 'Lalezar', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.main-cont {
+    display: flex; 
+}
+
+#texter {
+    text-align: left;
+}
+
+.vertnav {
+    margin: 0;
+    width: 200px;
+    background-color: #171717;
+    height: 82vh;
+    flex-direction: row; 
+}
+
+.vertnav a {
+    background-color: #171717;
+    color: #FFFFFF; 
+    display: block; 
+    padding: 12px; 
+    text-decoration: none; 
+}
+
+.vertnav a:hover {
+    background-color: #6114C0; 
+}
+
+.vertnav a:focus {
+    background-color: #6114C0; 
+}
+
+.logo {
+    margin: 20px 0 40px 0;
+    height: 70px;
+    width: 70px;
+}
+
+#options {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.logout {
+    margin-top: 33vh;
+    text-align: justify;
+}
+
+.content-homepage {
+    margin-left: 10px;
+    background-color: #0c0c0c;
+    height: calc(86vh - 38px); 
+    width: calc(100% - 200px); 
+    display: flex;
+    flex-direction: column; 
+    overflow-y: auto; 
+    padding: 10px; 
+}
+
+.horizontal-scroll {
+    display: flex; 
+    overflow-x: auto; 
+    padding-bottom: 10px;
+}
+
+.album-item, .track-item, .artist-item {
+    margin-right: 40px;
+    text-align: center; 
+    font-size: 12px;
+}
+
+.album-item img, .track-item img, .artist-item img {
+    border-radius: 5px; 
+}
+
+/* Search Bar Styles */
+.search-bar {
+    width: 40%; 
+    height: 20px; 
+    margin: 20px 0 0 300px;
+    padding: 10px;
+    border: 2px solid #6114C0; 
+    border-radius: 3px;
+    background-color: #1a1a1a; 
+    color: #FFFFFF; 
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: none;
+    box-shadow: 0px 4px 6px #33000000; 
+}   
+
+.search-bar::placeholder {
+    color: #888888; 
+}
+
+.search-bar:focus {
+    border-color: #33115e; 
+    box-shadow: 0px 0px 8px #6114C0; 
+    background-color: #262626;
+    transition: all 0.3s ease; 
+}
+
+.search-btn {
+    background-color: #6114C0;
+    color: #f1eded;
+    border: none;
+    width: 50px;
+    height: 38px;
+    position:flex;
+    left: 133vh;
+    top: 4.5vh;
+    padding: 0;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #6a33b1;
+    color: #f0d6d6;
+}
+
+.account {
+    background-color: white;
+    height: 10px;
+    width: 100%;
+}
+
+.play-btn {
+    background-color: #3a215b;
+    color: #afabab;
+    border: none;
+    width: 45px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    cursor: pointer; 
+}
+
+.play-btn:hover {
+    background-color: #6114C0;
+    color: #f0d6d6;
+}
+
+.play-cont {
+    position: fixed;
+    top: 83vh;
+    right: 0;
+    height: 17vh;
+    width: 100vw;
+    background-color: #171717;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.progress-bar {
+    position: absolute; 
+    width: 65%; 
+    bottom: 20%; 
+    left: 33%; 
+    z-index: 1;
+}
+
+#progress {
+    width: 70%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #585757;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+}
+
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #6114C0; 
+    border-radius: 50%; 
+    cursor: pointer;
+}
+
+#progress::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #6114C0; 
+    border-radius: 50%; 
+    cursor: pointer;
+}
+
+#progress::-ms-thumb {
+    width: 10px;
+    height: 10px;
+    background: #6114C0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.timestamps {
+    display: flex;
+    margin: 10vh 0 0 24vh;
+    justify-content: space-between; 
+    width: 50%; 
+    font-size: 12px;
+    color: white;
+}
+
+.music-controls {
+    position: absolute;
+    top: 40%; 
+    left: 57%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2; 
+    display: flex;
+    justify-content: space-around;
+    width: 20%; 
+}
+
+.music-controls-item {
+    cursor: pointer;
+    color: white; 
+}
+
+.music-controls-item--icon {
+    font-size: 1.5rem;
+}
